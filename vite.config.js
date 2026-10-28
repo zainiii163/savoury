@@ -1,4 +1,5 @@
-import { defineConfig } from 'vite';
+git branch -M main
+git push -u origin mainimport { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import tailwindcss from '@tailwindcss/vite';
 
