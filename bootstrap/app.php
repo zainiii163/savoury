@@ -12,7 +12,19 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        $middleware->append(\App\Http\Middleware\SecurityHeaders::class);
+
+        $middleware->alias([
+            'admin.access' => \App\Http\Middleware\EnsureUserCanAccessAdmin::class,
+            'menu.manage' => \App\Http\Middleware\EnsureUserCanManageMenu::class,
+            'orders.manage' => \App\Http\Middleware\EnsureUserCanManageOrders::class,
+            'settings.manage' => \App\Http\Middleware\EnsureUserCanManageSettings::class,
+            'reports.view' => \App\Http\Middleware\EnsureUserCanViewReports::class,
+            'cash.collect' => \App\Http\Middleware\EnsureUserCanCollectCash::class,
+        ]);
+
+        $middleware->redirectGuestsTo(fn () => route('admin.login'));
+        $middleware->redirectUsersTo(fn () => route('admin.dashboard'));
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

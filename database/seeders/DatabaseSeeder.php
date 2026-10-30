@@ -12,12 +12,14 @@ class DatabaseSeeder extends Seeder
     /**
      * Seed the application's database.
      *
-     * Only the supplied provisional menu is seeded. Admin/staff accounts are
-     * created deliberately by an operator, never with hard-coded credentials.
+     * Seeds RBAC definitions and the provisional menu only.
+     * Admin/staff user accounts are never hard-coded.
+     * Delivery zones, hours, fees, and address remain empty until the owner supplies them.
      */
     public function run(): void
     {
         $this->call([
+            RolePermissionSeeder::class,
             ProductSeeder::class,
         ]);
     }

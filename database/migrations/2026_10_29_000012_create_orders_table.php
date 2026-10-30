@@ -12,10 +12,13 @@ return new class extends Migration
             $table->id();
             $table->string('public_reference', 40)->unique();
             $table->string('idempotency_key', 64)->nullable()->unique();
+            $table->string('tracking_token_hash', 64)->unique()
+                ->comment('SHA-256 hash of the guest tracking token; plaintext is never stored.');
             $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
             $table->string('customer_name', 120);
             $table->string('phone', 20)->index();
             $table->enum('fulfillment_type', ['delivery', 'pickup'])->index();
+            $table->enum('payment_method', ['cash_on_delivery', 'cash_on_pickup']);
             $table->foreignId('delivery_zone_id')->nullable()->constrained()->nullOnDelete();
             $table->string('delivery_zone_name', 100)->nullable();
             $table->text('address')->nullable();

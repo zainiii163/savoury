@@ -32,4 +32,51 @@ return [
 
     'display_timezone' => 'Asia/Karachi',
 
+    /*
+    |--------------------------------------------------------------------------
+    | Order statuses
+    |--------------------------------------------------------------------------
+    |
+    | Stored values are snake_case. "ready" is shown to customers as
+    | "Ready for Pickup" when fulfilment is pickup.
+    |
+    */
+
+    'order_statuses' => [
+        'pending',
+        'accepted',
+        'preparing',
+        'ready',
+        'out_for_delivery',
+        'delivered',
+        'collected',
+        'cancelled',
+        'rejected',
+    ],
+
+    'fulfillment_types' => [
+        'delivery',
+        'pickup',
+    ],
+
+    'payment_methods' => [
+        'cash_on_delivery',
+        'cash_on_pickup',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Brand tokens (frontend Phase 3+)
+    |--------------------------------------------------------------------------
+    */
+
+    'brand' => [
+        'primary' => '#075B76',
+        'white' => '#FFFFFF',
+        'cream' => '#FFF2E7',
+        'accent' => '#D68B45',
+        'phone' => '0316-6100080',
+        'tagline' => 'Special Aroma, Homemade Trust',
+    ],
+
 ];

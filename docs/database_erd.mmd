@@ -1,0 +1,11 @@
+erDiagram
+  CATEGORIES ||--o{ PRODUCTS : contains
+  PRODUCTS ||--o{ PRODUCT_VARIANTS : offers
+  PRODUCTS ||--o{ PRODUCT_ADDONS : allows
+  ADDONS ||--o{ PRODUCT_ADDONS : selected
+  USERS o|--o{ ORDERS : places
+  ORDERS ||--|{ ORDER_ITEMS : includes
+  ORDERS ||--o{ ORDER_STATUS_HISTORIES : tracks
+  ORDERS ||--o{ PAYMENTS : records
+  DELIVERY_ZONES o|--o{ ORDERS : serves
+  USERS o|--o{ AUDIT_LOGS : creates
